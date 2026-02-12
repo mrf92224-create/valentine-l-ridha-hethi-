@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff4e78, #ff9eb5);
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    padding: 50px 40px;
+    border-radius: 30px;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 25px rgba(255, 0, 100, 0.4);
+    animation: fadeIn 2s ease-in-out;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(255, 0, 100, 0.8);
+    transition: 0.5s ease;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.6em;
+}
+
+.buttons {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    margin: 25px 0 10px;
+}
+
+button {
+    position: absolute;
+    padding: 12px 32px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#yesBtn {
+    background: white;
+    color: #ff2e63;
+    left: 20%;
+    top: 40px;
+}
+
+#yesBtn:hover {
+    transform: scale(1.1);
+}
+
+#noBtn {
+    background: #222;
+    color: white;
+    left: 60%;
+    top: 40px;
+}
+
+.counter {
+    font-size: 0.9em;
+    opacity: 0.85;
+    margin-bottom: 15px;
+}
+
+.hiddenMessage {
+    display: none;
+    animation: fadeIn 1.5s forwards;
+}
+
+.heart {
+    font-size: 45px;
+    margin-top: 15px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 1.8em; }
+    p { font-size: 0.95em; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1 id="mainTitle">Will you be my Valentine? ❤️</h1>
+
+    <div class="buttons" id="buttonBox">
+        <button id="yesBtn">Yes ❤️</button>
+        <button id="noBtn">No 😢</button>
+    </div>
+
+    <div class="counter" id="counterText"></div>
+
+    <div class="hiddenMessage" id="finalMessage">
+        <p>
+            <h2> i love u so much ya ayatee more than u think wllh w n7eb nebniw m3a b3athna  7aja behya</h2> <br>
+            habibi, you deserve more than flowers, more than gifts, more than anything I can afford right now.<br>
+            حبيبتي، أنتِ تستحقين أكثر من الزهور، أكثر من الهدايا، وأكثر من أي شيء أستطيع تحمّله الآن.<br><br>
+
+            I may not have money to give you something big for this occasion, but I give you my heart completely.<br>
+            قد لا أملك المال لأقدم لك شيئًا كبيرًا في هذه المناسبة، لكني أقدم لك قلبي كاملًا.<br><br>
+
+            And I promise you, one day I will give you everything you deserve and more.<br>
+            وأعدكِ أنه في يومٍ ما سأمنحكِ كل ما تستحقينه وأكثر.
+        </p>
+        <div class="heart">❤️</div>
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const buttonBox = document.getElementById("buttonBox");
+const finalMessage = document.getElementById("finalMessage");
+const counterText = document.getElementById("counterText");
+const mainTitle = document.getElementById("mainTitle");
+
+let clickCount = 0;
+
+noBtn.addEventListener("click", () => {
+
+    clickCount++;
+
+    const maxX = buttonBox.clientWidth - noBtn.offsetWidth;
+    const maxY = buttonBox.clientHeight - noBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+
+    counterText.innerText = "You can't escape me 😏 (Attempts: " + clickCount + ")";
+
+    if (clickCount === 3) {
+        noBtn.style.transform = "scale(0.8)";
+    }
+
+    if (clickCount === 5) {
+        yesBtn.style.transform = "scale(1.3)";
+        yesBtn.style.boxShadow = "0 0 20px white";
+    }
+});
+
+yesBtn.addEventListener("click", () => {
+
+    mainTitle.innerText = "I love u ya ayatee ❤️";
+
+    buttonBox.style.display = "none";
+    counterText.style.display = "none";
+    finalMessage.style.display = "block";
+});
+</script>
+
+</body>
+</html>
